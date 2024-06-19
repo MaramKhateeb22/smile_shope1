@@ -13,7 +13,7 @@ import 'package:smile_shope/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const SmileShop());
+    await tester.pumpWidget(const SmileShope());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

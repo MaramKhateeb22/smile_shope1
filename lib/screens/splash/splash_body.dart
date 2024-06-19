@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smile_shope/cache/cache_helper.dart';
+import 'package:smile_shope/layout/homeScreen.dart';
+import 'package:smile_shope/screens/onboarding/onboarding.dart';
 
 import '../../shared/components/constants.dart';
 import '../../shared/utils/assets.dart';
 import '../../shared/widgets/sliding_-text.dart';
-import '../onboarding/onboarding.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -24,13 +26,7 @@ class _SplashBodyState extends State<SplashBody>
   void initState() {
     super.initState();
     initSlidingInimation();
-     navigteToOnBoarding();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    //  slidingAnimation.dispose();
+    navigteToOnBoarding();
   }
 
   @override
@@ -60,10 +56,20 @@ class _SplashBodyState extends State<SplashBody>
   }
 
   void navigteToOnBoarding() {
-    Timer(Duration(seconds: 3), () {
-      Get.offAll(() => const onBoardingScreen(),
-          transition: Transition.fade, duration: ktranstionDuration);
-    });
+    bool isONBoardingVisited =
+        CacheHelper().getData(key: 'isONBoardingVisited') ?? false;
+    if (isONBoardingVisited == true) {
+      Timer(const Duration(seconds: 3), () {
+        Get.offAll(() => SmileShopeHomeScreen(),
+            transition: Transition.fade, duration: ktranstionDuration);
+      });
+    } else {
+      Timer(const Duration(seconds: 3), () {
+        Get.offAll(() => const onBoardingScreen(),
+            transition: Transition.fade, duration: ktranstionDuration);
+      });
+    }
+
     // Future.delayed(
     //  const Duration(seconds: 3),
     //  (){

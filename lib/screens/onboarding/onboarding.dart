@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smile_shope/Features/login/presentation/views/login_screen.dart';
+import 'package:smile_shope/cache/cache_helper.dart';
 import 'package:smile_shope/layout/homeScreen.dart';
 import 'package:smile_shope/shared/components/components.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../layout/home_test_bar.dart';
 
 class BoardingModel {
   final String? image;
@@ -14,7 +14,6 @@ class BoardingModel {
 }
 
 class onBoardingScreen extends StatefulWidget {
-   
   const onBoardingScreen({super.key});
 
   @override
@@ -50,13 +49,16 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              NavigateTo(context,  SmileShopeHomeScreen(
-                // scaffoldkey: scaffoldKey,
-              ));
+              NavigateTo(
+                context,
+                SmileShopeHomeScreen(
+                    // scaffoldkey: scaffoldKey,
+                    ),
+              );
             },
             child: const Text(
               'تخطي',
-              style: TextStyle(color: Colors.orange, fontSize: 25),
+              style: TextStyle(fontSize: 25),
             ),
           ),
         ],
@@ -122,11 +124,17 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                 child: MaterialButton(
                   onPressed: () {
                     if (isLast == true) {
-                      NavigateTo(context,  SmileShopeHomeScreen(
-                        // scaffoldkey: scaffoldKey,
-                      )
-
-                       );
+                      CacheHelper()
+                          .saveData(key: 'isONBoardingVisited', value: true);
+                      // NavigateTo(
+                      //     context,
+                      //     SmileShopeHomeScreen(
+                      //         // scaffoldkey: scaffoldKey,
+                      //         ));
+                      NavigateTo(
+                        context,
+                        const LoginScreen(),
+                      );
                     }
                     pageController.nextPage(
                         duration: const Duration(seconds: 1),
