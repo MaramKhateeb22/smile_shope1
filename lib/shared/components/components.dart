@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 
 Widget defaultMybutton() => Padding(
       padding: const EdgeInsets.all(8.0),
@@ -35,3 +36,8 @@ void NavigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       ),
       (Route<dynamic> route) => false,
     );
+void message(BuildContext context, String msg, {int longTime = 5}) {
+  ToastContext toastContext = ToastContext();
+  toastContext.init(context);
+  Toast.show(msg, duration: longTime);
+}

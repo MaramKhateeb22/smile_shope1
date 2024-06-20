@@ -7,7 +7,7 @@ class CustomInputField extends StatefulWidget {
   final bool? isDense;
   final bool obscureText;
   final TextEditingController? controller;
-
+  final String? Function(String?)? validate;
   const CustomInputField(
       {Key? key,
       required this.labelText,
@@ -15,7 +15,8 @@ class CustomInputField extends StatefulWidget {
       this.suffixIcon = false,
       this.isDense,
       this.obscureText = false,
-      this.controller})
+      this.controller,
+      this.validate})
       : super(key: key);
 
   @override
@@ -64,12 +65,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   : null,
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (textValue) {
-              if (textValue == null || textValue.isEmpty) {
-                return 'required!';
-              }
-              return null;
-            },
+            validator: widget.validate,
             controller: widget.controller,
           ),
         ],

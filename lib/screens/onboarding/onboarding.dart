@@ -51,10 +51,9 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
             onPressed: () {
               NavigateTo(
                 context,
-                SmileShopeHomeScreen(
-                    // scaffoldkey: scaffoldKey,
-                    ),
+                SmileShopeHomeScreen(),
               );
+              CacheHelper().saveData(key: 'isONBoardingVisited', value: true);
             },
             child: const Text(
               'تخطي',

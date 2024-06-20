@@ -1,9 +1,13 @@
 class EndPoint {
-  static String baseUrl = "https://food-api-omega.vercel.app/api/v1/";
-  static String signIn = "user/signin";
-  static String signUp = "user/signup";
+  static String baseUrl = "https://smilestore20002000.000webhostapp.com/api/";
+  // static String signIn = "user/signin";
+  // static String signUp = "user/signup";
   static String getUserDataEndPoint(id) {
     return "user/get-user/$id";
+  }
+
+  static String login(String email, String password) {
+    return "auth/login?email=$email&password=$password";
   }
 }
 

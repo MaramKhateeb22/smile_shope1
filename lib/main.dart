@@ -1,10 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:smile_shope/Features/login/data/repos/repo.dart';
 import 'package:smile_shope/Features/login/presentation/manager/login_cubit.dart';
 import 'package:smile_shope/Features/register/presentation/manager/cubit/register_cubit.dart';
 import 'package:smile_shope/cache/cache_helper.dart';
+import 'package:smile_shope/core/api/dio_consumer.dart';
 import 'package:smile_shope/screens/splash/splash.dart';
 
 void main() async {
@@ -21,7 +24,19 @@ class SmileShope extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
+        BlocProvider<LoginCubit>(
+          create: (context) => LoginCubit(
+            LoginRepo(
+              api: DioConsumer(
+                dio: Dio(),
+              ),
+            ),
+              // api: DioConsumer(
+              //   dio: Dio(),
+              // ),
+
+              ),
+        ),
         BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
       ],
       child: GetMaterialApp(
@@ -39,7 +54,7 @@ class SmileShope extends StatelessWidget {
         //  onBoardingScreen(),
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.white10,
             elevation: 0,
             titleTextStyle: TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),

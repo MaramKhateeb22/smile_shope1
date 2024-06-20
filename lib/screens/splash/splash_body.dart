@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smile_shope/Features/login/presentation/views/login_screen.dart';
 import 'package:smile_shope/cache/cache_helper.dart';
 import 'package:smile_shope/layout/homeScreen.dart';
 import 'package:smile_shope/screens/onboarding/onboarding.dart';
 
 import '../../shared/components/constants.dart';
-import '../../shared/utils/assets.dart';
 import '../../shared/widgets/sliding_-text.dart';
 
 class SplashBody extends StatefulWidget {
@@ -35,7 +35,8 @@ class _SplashBodyState extends State<SplashBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(AssetsData.logo),
+        // Image.asset(AssetsData.logo),
+        // Image.asset('assets/images/Logo-removebg-preview.png'),
         const SizedBox(
           height: 25,
         ),
@@ -58,11 +59,21 @@ class _SplashBodyState extends State<SplashBody>
   void navigteToOnBoarding() {
     bool isONBoardingVisited =
         CacheHelper().getData(key: 'isONBoardingVisited') ?? false;
+    bool isLogin = CacheHelper().getData(key: 'isLogin') ?? false;
+    print('isLogin:' '$isLogin');
     if (isONBoardingVisited == true) {
-      Timer(const Duration(seconds: 3), () {
-        Get.offAll(() => SmileShopeHomeScreen(),
-            transition: Transition.fade, duration: ktranstionDuration);
-      });
+      print('$isONBoardingVisited' '\n');
+      if (isLogin == true) {
+        Timer(const Duration(seconds: 3), () {
+          Get.offAll(() => SmileShopeHomeScreen(),
+              transition: Transition.fade, duration: ktranstionDuration);
+        });
+      } else {
+        Timer(const Duration(seconds: 3), () {
+          Get.offAll(() => const LoginScreen(),
+              transition: Transition.fade, duration: ktranstionDuration);
+        });
+      }
     } else {
       Timer(const Duration(seconds: 3), () {
         Get.offAll(() => const onBoardingScreen(),

@@ -44,6 +44,8 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_localization: ^0.2.0
   image_picker: ^1.1.2
+  dartz: ^0.10.1
+  toast: ^0.3.0
   
 
 dev_dependencies:
