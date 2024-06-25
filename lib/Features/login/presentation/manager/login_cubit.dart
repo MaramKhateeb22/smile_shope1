@@ -40,7 +40,6 @@ class LoginCubit extends Cubit<LoginState> {
   void clearForm() {
     loginEmailController.clear();
     loginPasswordController.clear();
-
     emit(ClearFormLoginState());
   }
 }

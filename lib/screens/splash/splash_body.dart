@@ -60,10 +60,11 @@ class _SplashBodyState extends State<SplashBody>
     bool isONBoardingVisited =
         CacheHelper().getData(key: 'isONBoardingVisited') ?? false;
     bool isLogin = CacheHelper().getData(key: 'isLogin') ?? false;
-    print('isLogin:' '$isLogin');
+    bool isRegister = CacheHelper().getData(key: 'isRegister') ?? false;
+    print('isLogin:' '$isLogin' 'isRegister:' '$isRegister');
     if (isONBoardingVisited == true) {
       print('$isONBoardingVisited' '\n');
-      if (isLogin == true) {
+      if (isLogin == true || isRegister == true) {
         Timer(const Duration(seconds: 3), () {
           Get.offAll(() => SmileShopeHomeScreen(),
               transition: Transition.fade, duration: ktranstionDuration);

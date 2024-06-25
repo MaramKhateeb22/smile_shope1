@@ -65,6 +65,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   : null,
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
+            textInputAction: TextInputAction.next,
             validator: widget.validate,
             controller: widget.controller,
           ),

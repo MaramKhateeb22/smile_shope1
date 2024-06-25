@@ -9,6 +9,17 @@ class EndPoint {
   static String login(String email, String password) {
     return "auth/login?email=$email&password=$password";
   }
+
+  static String register(
+      String name,
+      String email,
+      String password,
+      String confirmPassword,
+      String adress,
+      String phone,
+      String emailverifiedat) {
+    return "auth/register?name=$name&email=$email&password=$password&password_confirmation=$confirmPassword&address=$adress&phone=$phone&email_verified_at=$emailverifiedat";
+  }
 }
 
 class ApiKey {

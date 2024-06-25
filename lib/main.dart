@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:smile_shope/Features/login/data/repos/repo.dart';
 import 'package:smile_shope/Features/login/presentation/manager/login_cubit.dart';
+import 'package:smile_shope/Features/register/data/repos/repo.dart';
 import 'package:smile_shope/Features/register/presentation/manager/cubit/register_cubit.dart';
 import 'package:smile_shope/cache/cache_helper.dart';
 import 'package:smile_shope/core/api/dio_consumer.dart';
@@ -31,13 +32,20 @@ class SmileShope extends StatelessWidget {
                 dio: Dio(),
               ),
             ),
-              // api: DioConsumer(
-              //   dio: Dio(),
-              // ),
-
-              ),
+            // api: DioConsumer(
+            //   dio: Dio(),
+            // ),
+          ),
         ),
-        BlocProvider<RegisterCubit>(create: (context) => RegisterCubit()),
+        BlocProvider<RegisterCubit>(
+          create: (context) => RegisterCubit(
+            RegisterRepo(
+              api: DioConsumer(
+                dio: Dio(),
+              ),
+            ),
+          ),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

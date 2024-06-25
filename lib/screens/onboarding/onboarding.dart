@@ -51,7 +51,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
             onPressed: () {
               NavigateTo(
                 context,
-                SmileShopeHomeScreen(),
+                LoginScreen(),
               );
               CacheHelper().saveData(key: 'isONBoardingVisited', value: true);
             },
