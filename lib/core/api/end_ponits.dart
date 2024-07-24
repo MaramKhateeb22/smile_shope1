@@ -1,5 +1,5 @@
 class EndPoint {
-  static String baseUrl = "https://smilestore20002000.000webhostapp.com/api/";
+  static String baseUrl = "http://yomnabaksmawi-001-site1.ltempurl.com";
   // static String signIn = "user/signin";
   // static String signUp = "user/signup";
   static String getUserDataEndPoint(id) {

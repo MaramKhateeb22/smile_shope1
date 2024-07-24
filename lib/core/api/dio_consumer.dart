@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:smile_shope/core/api/api_consumer.dart';
 import 'package:smile_shope/core/api/api_interceptors.dart';
@@ -6,10 +8,12 @@ import 'package:smile_shope/core/errors/exceptions.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
-
+ String username = '11184828';
+       String password = '60-dayfreetrial';
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoint.baseUrl;
     dio.interceptors.add(ApiInterceptor());
+     dio.options.headers['Authorization'] = 'Basic ' + base64Encode(utf8.encode('$username:$password'));
     dio.interceptors.add(LogInterceptor(
       request: true,
       requestHeader: true,

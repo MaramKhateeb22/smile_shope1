@@ -60,20 +60,23 @@ class SmileShopeScreen1 extends StatelessWidget {
 
           ),
 
-          bottom: TabBar(
-            isScrollable: true, // لجعل التبويبات قابلة للتمرير
-            tabs: List<Widget>.generate(10, (index) {
-              // إنشاء قائمة من تبويبات
-              return Tab(text: 'العنصر ${index + 1}');
-            }),
-          ),
+          // bottom: TabBar(
+          //   isScrollable: true, // لجعل التبويبات قابلة للتمرير
+          //   tabs: List<Widget>.generate(10, (index) {
+          //     // إنشاء قائمة من تبويبات
+          //     return Tab(text: 'العنصر ${index + 1}');
+          //   }),
+          // ),
+       
         ),
-        body: TabBarView(
-          children: List<Widget>.generate(10, (index) {
-            // إنشاء قائمة من المحتويات لكل تبويب
-            return Center(child: Text('محتوى العنصر ${index + 1}'));
-          }),
-        ),
+        body: Text('data')
+        // TabBarView(
+        //   children: List<Widget>.generate(10, (index) {
+        //     // إنشاء قائمة من المحتويات لكل تبويب
+        //     return Center(child: Text('محتوى العنصر ${index + 1}'));
+        //   }),
+        // ),
+     
       ),
     );
   }
